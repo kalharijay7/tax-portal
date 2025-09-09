@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Kalhari",
+    "lastName": "Jay",
+    "email": "sujithajayasinghe@gmail.com",
+    "password": "$2b$10$bXf1.mPyC21trXus6KVb7.achAqbVOv.QBLBwc.ce16yFoBl1OO1K",
+    "userType": "Individual User"
+  },
+  {
+    "firstName": "Kalhari",
+    "lastName": "Jay",
+    "email": "kalhari@gmail.com",
+    "password": "$2b$10$qvvS7dEQy4RY/171RyMze.Menta4lbS8SciSU.9aM4P4RP0g2yc/a",
+    "userType": "Business User"
+  }
+]
