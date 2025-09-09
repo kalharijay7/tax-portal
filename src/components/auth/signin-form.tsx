@@ -53,7 +53,7 @@ export function SignInForm({ onSignUpClick }: SignInFormProps) {
       const users = await response.json();
 
       // Find the user by email
-      const user = users.find((u: any) => u.email === email);
+      const user = users.find((u: { email: string }) => u.email === email);
       if (!user) {
         setErrors({ email: "Invalid email or password" });
         return;
