@@ -26,7 +26,7 @@ export default async function handler(req, res) {
         );
 
         if (existingUser) {
-            res.status(400).json({ message: "User with this email already exists" });
+            return res.status(400).json({ message: "User with this email already exists" });
         }
 
         // Add a new user    

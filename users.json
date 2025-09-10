@@ -12,5 +12,12 @@
     "email": "kalhari@gmail.com",
     "password": "$2b$10$qvvS7dEQy4RY/171RyMze.Menta4lbS8SciSU.9aM4P4RP0g2yc/a",
     "userType": "Business User"
+  },
+  {
+    "firstName": "Umesh",
+    "lastName": "Madhushan",
+    "email": "umesh@email.com",
+    "password": "$2b$10$udzv686Mhd.0k3ja4GSadumDMBrCcyLpDFJIgcERaIkhC7Bt3Hqw.",
+    "userType": "Business User"
   }
 ]
