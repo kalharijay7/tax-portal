@@ -10,9 +10,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { cn, validateEmail, validatePassword } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import bcrypt from "bcryptjs";
-import { Client } from "@hubspot/api-client"; // Import HubSpot client
-
-const hubspotClient = new Client({ apiKey: "your-hubspot-api-key" }); // Replace with your HubSpot API key
 
 interface SignUpFormProps {
   onSignInClick: () => void;
@@ -103,18 +100,11 @@ export function SignUpForm({ onSignInClick }: SignUpFormProps) {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to register user");
+        // Parse error response
+        const errorData = await response.json();
+        setErrors({ email: errorData.message || "Failed to register user" });
+        return;
       }
-
-      // Add user to HubSpot
-      await hubspotClient.crm.contacts.basicApi.create({
-        properties: {
-          firstname: firstName,
-          lastname: lastName,
-          email: email,
-          user_type: userType,
-        },
-      });
 
       // Set session cookie
       document.cookie = "session=valid; path=/;";
@@ -125,9 +115,13 @@ export function SignUpForm({ onSignInClick }: SignUpFormProps) {
       } else {
         router.push("/individual-services");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error during signup:", error);
-      setErrors({ email: "An error occurred. Please try again." });
+
+      setErrors((prev) => ({
+        ...prev,
+        email: error.message || "Failed to register user",
+      }));
     } finally {
       setIsLoading(false);
     }
